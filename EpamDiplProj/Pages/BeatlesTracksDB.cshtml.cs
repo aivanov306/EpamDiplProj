@@ -5,9 +5,9 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
-namespace EpamDiplProj.Pages
+namespace BeatlesTracksDB.Pages
 {
-    public class BeatlesTracksKBModel : PageModel
+    public class BeatlesTracksDBModel : PageModel
     {
         public void OnGet()
         {
