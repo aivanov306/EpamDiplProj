@@ -8,6 +8,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
+using BeatlesTrackDB.Data;
 
 namespace BeatlesTracksDB
 {
@@ -24,6 +26,9 @@ namespace BeatlesTracksDB
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddRazorPages().AddRazorRuntimeCompilation();
+
+            services.AddDbContext<BeatlesTrackDBContext>(options =>
+                    options.UseSqlServer(Configuration.GetConnectionString("BeatlesTrackDBContext")));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

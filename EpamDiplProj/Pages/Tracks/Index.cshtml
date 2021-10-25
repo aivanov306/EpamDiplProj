@@ -1,0 +1,90 @@
+﻿@page
+@model BeatlesTrackDB.Pages.Tracks.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-page="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.ItunesTrackslist[0].kind)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ItunesTrackslist[0].collectionName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ItunesTrackslist[0].trackName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ItunesTrackslist[0].collectionPrice)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ItunesTrackslist[0].trackPrice)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ItunesTrackslist[0].primaryGenreName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ItunesTrackslist[0].trackCount)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ItunesTrackslist[0].trackNumber)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ItunesTrackslist[0].releaseDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ItunesTrackslist[0].artistId)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.ItunesTrackslist) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.kind)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.collectionName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.trackName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.collectionPrice)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.trackPrice)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.primaryGenreName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.trackCount)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.trackNumber)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.releaseDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.artistId)
+            </td>
+            <td>
+                <a asp-page="./Edit" asp-route-id="@item.trackId">Edit</a> |
+                <a asp-page="./Details" asp-route-id="@item.trackId">Details</a> |
+                <a asp-page="./Delete" asp-route-id="@item.trackId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

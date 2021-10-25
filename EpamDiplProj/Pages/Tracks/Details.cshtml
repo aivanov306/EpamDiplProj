@@ -1,0 +1,79 @@
+﻿@page
+@model BeatlesTrackDB.Pages.Tracks.DetailsModel
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>ItunesTrackslist</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ItunesTrackslist.kind)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ItunesTrackslist.kind)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ItunesTrackslist.collectionName)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ItunesTrackslist.collectionName)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ItunesTrackslist.trackName)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ItunesTrackslist.trackName)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ItunesTrackslist.collectionPrice)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ItunesTrackslist.collectionPrice)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ItunesTrackslist.trackPrice)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ItunesTrackslist.trackPrice)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ItunesTrackslist.primaryGenreName)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ItunesTrackslist.primaryGenreName)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ItunesTrackslist.trackCount)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ItunesTrackslist.trackCount)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ItunesTrackslist.trackNumber)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ItunesTrackslist.trackNumber)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ItunesTrackslist.releaseDate)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ItunesTrackslist.releaseDate)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ItunesTrackslist.artistId)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ItunesTrackslist.artistId)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-page="./Edit" asp-route-id="@Model.ItunesTrackslist.trackId">Edit</a> |
+    <a asp-page="./Index">Back to List</a>
+</div>

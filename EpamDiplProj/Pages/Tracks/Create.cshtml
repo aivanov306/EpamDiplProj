@@ -1,0 +1,79 @@
+﻿@page
+@model BeatlesTrackDB.Pages.Tracks.CreateModel
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<h4>ItunesTrackslist</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="ItunesTrackslist.kind" class="control-label"></label>
+                <input asp-for="ItunesTrackslist.kind" class="form-control" />
+                <span asp-validation-for="ItunesTrackslist.kind" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ItunesTrackslist.collectionName" class="control-label"></label>
+                <input asp-for="ItunesTrackslist.collectionName" class="form-control" />
+                <span asp-validation-for="ItunesTrackslist.collectionName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ItunesTrackslist.trackName" class="control-label"></label>
+                <input asp-for="ItunesTrackslist.trackName" class="form-control" />
+                <span asp-validation-for="ItunesTrackslist.trackName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ItunesTrackslist.collectionPrice" class="control-label"></label>
+                <input asp-for="ItunesTrackslist.collectionPrice" class="form-control" />
+                <span asp-validation-for="ItunesTrackslist.collectionPrice" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ItunesTrackslist.trackPrice" class="control-label"></label>
+                <input asp-for="ItunesTrackslist.trackPrice" class="form-control" />
+                <span asp-validation-for="ItunesTrackslist.trackPrice" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ItunesTrackslist.primaryGenreName" class="control-label"></label>
+                <input asp-for="ItunesTrackslist.primaryGenreName" class="form-control" />
+                <span asp-validation-for="ItunesTrackslist.primaryGenreName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ItunesTrackslist.trackCount" class="control-label"></label>
+                <input asp-for="ItunesTrackslist.trackCount" class="form-control" />
+                <span asp-validation-for="ItunesTrackslist.trackCount" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ItunesTrackslist.trackNumber" class="control-label"></label>
+                <input asp-for="ItunesTrackslist.trackNumber" class="form-control" />
+                <span asp-validation-for="ItunesTrackslist.trackNumber" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ItunesTrackslist.releaseDate" class="control-label"></label>
+                <input asp-for="ItunesTrackslist.releaseDate" class="form-control" />
+                <span asp-validation-for="ItunesTrackslist.releaseDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ItunesTrackslist.artistId" class="control-label"></label>
+                <input asp-for="ItunesTrackslist.artistId" class="form-control" />
+                <span asp-validation-for="ItunesTrackslist.artistId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

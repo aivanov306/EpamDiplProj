@@ -10,16 +10,16 @@ EXPOSE 443
 
 FROM mcr.microsoft.com/dotnet/sdk:5.0 AS build
 WORKDIR /src
-COPY ["EpamDiplProj/EpamDiplProj.csproj", "EpamDiplProj/"]
-RUN dotnet restore "EpamDiplProj/EpamDiplProj.csproj"
+COPY ["EpamDiplProj/BeatlesTracksDB.csproj", "EpamDiplProj/"]
+RUN dotnet restore "EpamDiplProj/BeatlesTracksDB.csproj"
 COPY . .
 WORKDIR "/src/EpamDiplProj"
-RUN dotnet build "EpamDiplProj.csproj" -c Release -o /app/build
+RUN dotnet build "BeatlesTracksDB.csproj" -c Release -o /app/build
 
 FROM build AS publish
-RUN dotnet publish "EpamDiplProj.csproj" -c Release -o /app/publish
+RUN dotnet publish "BeatlesTracksDB.csproj" -c Release -o /app/publish
 
 FROM base AS final
 WORKDIR /app
 COPY --from=publish /app/publish .
-ENTRYPOINT ["dotnet", "EpamDiplProj.dll"]
+ENTRYPOINT ["dotnet", "BeatlesTracksDB.dll"]

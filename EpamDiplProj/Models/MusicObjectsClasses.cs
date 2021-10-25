@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -19,7 +20,6 @@ namespace BeatlesTracksDB.Models
     }
     public class ItunesTrackslist
     {
-
         public string kind { get; set; }
         public string collectionName { get; set; }
         public string trackName { get; set; }
@@ -29,6 +29,7 @@ namespace BeatlesTracksDB.Models
         public int trackCount { get; set; }
         public int trackNumber { get; set; }
         public DateTime releaseDate { get; set; }
+        [Key]
         public int trackId { get; set; }
         public int artistId { get; set; }
 
