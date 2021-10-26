@@ -10,7 +10,7 @@ namespace BeatlesTracksDB.Models
     public  class ItunesRestClient
     {
         
-        public static async Task ImportItunesRestData(HttpClient client)
+        public static async Task<List<ItunesTrackslist>> ImportItunesRestData (HttpClient client)
         {
             List<ItunesTrackslist> totalItunesTrackslist = new();
             string ItunesAlbumResponseBody = await client.GetStringAsync("https://itunes.apple.com/lookup?id=136975&entity=album&limit=200");
@@ -33,6 +33,7 @@ namespace BeatlesTracksDB.Models
                 }
             }
             Console.WriteLine(totalItunesTrackslist.Count);
+            return totalItunesTrackslist;
         }
     }
 }
