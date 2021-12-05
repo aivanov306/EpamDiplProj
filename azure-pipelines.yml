@@ -6,8 +6,6 @@ trigger:
 resources:
 - repo: self
 variables:
-  # Container registry service connection established during pipeline creation
-  dockerRegistryServiceConnection: '50ae9c97-9ade-4f0f-8882-b192229bb473'
   imageRepository: 'beatlestracksdb'
   containerRegistry: 'adocr01'
   dockerfilePath: '$(Build.SourcesDirectory)/EpamDiplProj/Dockerfile'
