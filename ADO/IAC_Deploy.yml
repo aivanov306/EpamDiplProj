@@ -1,8 +1,8 @@
 trigger:
   batch: true
   branches:
-    include:
-      - dev
+    include:      
+      - IaC
 
 pool:
   vmImage: ubuntu-latest
