@@ -1,8 +1,7 @@
 stages:
 - stage: Deploy
   displayName: Deploy to dev
-  variables:
-    DBConnectionString: $(DBConnectionString)
+
   jobs:
   - deployment: Deploy
     displayName: Deploy to AKS
@@ -41,7 +40,9 @@ stages:
               tokenSuffix: '#'
               useLegacyPattern: false
               enableTransforms: false
-              enableTelemetry: true          
+              enableTelemetry: true   
+            env:
+              DBConnectionString: $(DBConnectionString)       
           - task: Bash@3
             inputs:
               targetType: 'inline'
