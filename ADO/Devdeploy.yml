@@ -25,5 +25,5 @@ stages:
             inputs:
               targetType: 'inline'
               script: |
-                ls -lR
-                tree
+                ls -lR $(Pipeline.Workspace)/manifests
+                tree $(Pipeline.Workspace)/manifests
