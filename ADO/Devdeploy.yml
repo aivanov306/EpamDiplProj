@@ -1,6 +1,5 @@
 - stage: Deploy
   displayName: Deploy to dev
-  dependsOn: Build
   variables:
     DBConnectionString: $(DBConnectionString)
   jobs:
@@ -13,4 +12,17 @@
       runOnce:
         deploy:
           steps:
-          - task: 
+          - task: DownloadPipelineArtifact@2
+            inputs:
+              source: 'specific'
+              artifact: 'manifests'
+              path: '$(Pipeline.Workspace)/manifests'
+              project: 'BeatlesTracksDBVSS'
+              pipeline: 11
+              runVersion: 'latest'
+          - task: Bash@3
+            inputs:
+              targetType: 'inline'
+              script: |
+                ls -lR
+                tree
