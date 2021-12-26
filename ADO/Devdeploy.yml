@@ -1,3 +1,6 @@
+trigger:
+
+stages:
 - stage: Deploy
   displayName: Deploy to dev
   variables:
