@@ -31,3 +31,8 @@ stages:
         containerRegistry: $(containerRegistry)
         tags: |
           $(tag)
+    - task: PublishPipelineArtifact@1
+      inputs:
+        targetPath: '$(Pipeline.Workspace)/manifests'
+        artifact: 'manifests'
+        publishLocation: 'pipeline'

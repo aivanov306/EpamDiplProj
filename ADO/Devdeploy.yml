@@ -1,0 +1,16 @@
+- stage: Deploy
+  displayName: Deploy to dev
+  dependsOn: Build
+  variables:
+    DBConnectionString: $(DBConnectionString)
+  jobs:
+  - deployment: Deploy
+    displayName: Deploy to AKS
+    environment: 'k8s.dev'
+    pool: 
+      vmImage: ubuntu-latest
+    strategy:
+      runOnce:
+        deploy:
+          steps:
+          - task: 
