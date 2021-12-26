@@ -13,12 +13,6 @@ stages:
       runOnce:
         deploy:
           steps:
-          - task: Bash@3
-            inputs:
-              targetType: 'inline'
-              script: |
-                ls -lR $(Pipeline.Workspace)/manifests
-                tree $(Pipeline.Workspace)/manifests
           - task: DownloadPipelineArtifact@2
             inputs:
               source: 'specific'
@@ -33,3 +27,25 @@ stages:
               script: |
                 ls -lR $(Pipeline.Workspace)/manifests
                 tree $(Pipeline.Workspace)/manifests
+                cat $(Pipeline.Workspace)/manifests/dbsecret.yml
+          - task: replacetokens@3
+            displayName: Replace Tokens
+            inputs:
+              rootDirectory: '$(Pipeline.Workspace)/manifests/'
+              targetFiles: 'dbsecret.yml'
+              encoding: 'auto'
+              writeBOM: true
+              actionOnMissing: 'warn'
+              keepToken: false
+              tokenPrefix: '#'
+              tokenSuffix: '#'
+              useLegacyPattern: false
+              enableTransforms: false
+              enableTelemetry: true          
+          - task: Bash@3
+            inputs:
+              targetType: 'inline'
+              script: |
+                ls -lR $(Pipeline.Workspace)/manifests
+                tree $(Pipeline.Workspace)/manifests
+                cat $(Pipeline.Workspace)/manifests/dbsecret.yml
