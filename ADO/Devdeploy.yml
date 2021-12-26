@@ -50,3 +50,11 @@ stages:
                 ls -lR $(Pipeline.Workspace)/manifests
                 tree $(Pipeline.Workspace)/manifests
                 cat $(Pipeline.Workspace)/manifests/dbsecret.yml
+          - task: KubernetesManifest@0
+            inputs:
+              action: 'deploy'
+              namespace: 'default'
+              manifests: |
+                $(Pipeline.Workspace)/manifests/dbsecret.yml
+                $(Pipeline.Workspace)/manifests/beatlestracksdb.yml              
+              imagePullSecrets: '$(acrsecret)'
