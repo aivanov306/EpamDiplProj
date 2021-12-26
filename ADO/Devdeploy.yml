@@ -13,6 +13,12 @@ stages:
       runOnce:
         deploy:
           steps:
+          - task: Bash@3
+            inputs:
+              targetType: 'inline'
+              script: |
+                ls -lR $(Pipeline.Workspace)/manifests
+                tree $(Pipeline.Workspace)/manifests
           - task: DownloadPipelineArtifact@2
             inputs:
               source: 'specific'
