@@ -53,7 +53,7 @@ stages:
           - task: KubernetesManifest@0
             inputs:
               action: 'deploy'
-              namespace: 'default'
+              namespace: 'dev'
               manifests: |
                 $(Pipeline.Workspace)/manifests/dbsecret.yml
                 $(Pipeline.Workspace)/manifests/beatlestracksdb.yml              
