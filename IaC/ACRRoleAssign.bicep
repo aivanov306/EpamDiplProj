@@ -1,6 +1,6 @@
 param ACRName string = 'adocr01'
 
-param AKSPrincipalID string ='d5396110-912d-4849-a2c8-74f95040c152'
+param AKSPrincipalID string 
 
 
 
