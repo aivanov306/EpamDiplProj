@@ -1,3 +1,5 @@
+trigger:
+- IaC
 pool:
   vmImage: ubuntu-latest
 
