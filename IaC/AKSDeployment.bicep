@@ -30,12 +30,16 @@ resource AKSDeployment 'Microsoft.ContainerService/managedClusters@2021-02-01' =
         enableAutoScaling: true
         minCount: 1
         maxCount: 5
-        vmSize: 'Standard_B4ms'
+        vmSize: 'Standard_D2_v2'
         osType: 'Linux'        
         type: 'VirtualMachineScaleSets'
         mode: 'System'
         maxPods: 110
-        availabilityZones: []
+        availabilityZones: [
+          '1'
+          '2'
+          '3'
+        ]
         vnetSubnetID: '/subscriptions/2579d2a0-24cb-465f-a993-7ce815bd8937/resourceGroups/AKS01RG/providers/Microsoft.Network/virtualNetworks/AKSVnet/subnets/default'
       }
     ]
