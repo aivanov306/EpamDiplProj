@@ -5,7 +5,7 @@ stages:
   jobs:
   - deployment: Deploy
     displayName: Deploy to AKS
-    environment: 'k8s.dev'
+    environment: $(k8sEnv)
     pool: 
       vmImage: ubuntu-latest
     strategy:
@@ -18,7 +18,7 @@ stages:
               artifact: 'manifests'
               path: '$(Pipeline.Workspace)/manifests'
               project: 'BeatlesTracksDBVSS'
-              pipeline: 11
+              pipeline: $(SourcePipelineArtifact)
               runVersion: 'latest'
           - task: Bash@3
             inputs:
