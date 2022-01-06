@@ -4,7 +4,10 @@ resources:
   pipelines:
   - pipeline: DEV_BuildAndPush
     source: DEV_BuildAndPush
-    trigger: true
+    trigger:
+      branches:
+        include:
+        - dev
 
 stages:
 - stage: Deploy
