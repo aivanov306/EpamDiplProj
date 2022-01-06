@@ -1,12 +1,12 @@
 resources:
   pipelines:
-  - pipeline: DEV_BuildAndPush
+  - pipeline: BuildAndPush
     source: DEV_BuildAndPush
     trigger:
       branches:
         include:
         - dev
-        
+
 trigger: none
 stages:
 - stage: Deploy
@@ -28,7 +28,7 @@ stages:
               artifact: 'manifests'
               path: '$(Pipeline.Workspace)/manifests'
               project: 'BeatlesTracksDBVSS'
-              pipeline: $(SourcePipelineArtifact)
+              pipeline: BuildAndPush
               runVersion: 'latest'
           - task: Bash@3
             inputs:
