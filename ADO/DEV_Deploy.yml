@@ -10,7 +10,7 @@ stages:
 
   jobs:
   - deployment: Deploy
-    displayName: Deploy to AKS
+    displayName: Deploy to AKS (dev env)
     environment: $(k8sEnv)
     pool: 
       vmImage: ubuntu-latest
