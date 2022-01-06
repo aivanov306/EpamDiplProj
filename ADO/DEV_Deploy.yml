@@ -28,7 +28,7 @@ stages:
               artifact: 'manifests'
               path: '$(Pipeline.Workspace)/manifests'
               project: 'BeatlesTracksDBVSS'
-              pipeline: BuildAndPush
+              pipeline: DEV_BuildAndPush
               runVersion: 'latest'
           - task: Bash@3
             inputs:
