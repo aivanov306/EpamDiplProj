@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
       - name: beatlestracksdb
-        image: adocr01.azurecr.io/beatlestracksdb:17
+        image: adocr01.azurecr.io/beatlestracksdb:#BuildTag#
         env:
           - name: ConnectionStrings__BeatlesTrackDBContext
             valueFrom:

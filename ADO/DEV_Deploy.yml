@@ -52,7 +52,7 @@ stages:
               enableTransforms: false
               enableTelemetry: true   
             env:
-              DBConnectionString: $(DBConnectionString)       
+              DBConnectionString: $(DBConnectionString)
           - task: Bash@3
             inputs:
               targetType: 'inline'
