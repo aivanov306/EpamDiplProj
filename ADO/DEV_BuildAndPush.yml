@@ -4,6 +4,10 @@ trigger:
   branches:
     include:
     - dev
+  paths:    
+    exclude:
+    - ADO
+    - IAC
 resources:
 - repo: self
 variables:
