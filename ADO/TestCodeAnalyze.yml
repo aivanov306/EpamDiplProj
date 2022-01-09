@@ -21,6 +21,15 @@ steps:
   inputs:
     restoreSolution: '$(solution)'
 
+- task: SonarCloudPrepare@1
+  displayName: 'Prepare analysis configuration'
+  inputs:
+    SonarCloud: 'SonarCloudSC'
+    organization: 'aleksandrivanov13'
+    scannerMode: 'MSBuild'
+    projectKey: 'AleksandrIvanov13_BeatlesTracksDBVSS'
+    projectName: 'BeatlesTracksDBVSS'
+
 - task: VSBuild@1
   inputs:
     solution: '$(solution)'
@@ -32,3 +41,9 @@ steps:
   inputs:
     platform: '$(buildPlatform)'
     configuration: '$(buildConfiguration)'
+
+- task: SonarCloudAnalyze@1
+  displayName: 'Run SonarCloud analysis'
+
+- task: SonarCloudPublish@1
+  displayName: 'Publish results on build summary'
