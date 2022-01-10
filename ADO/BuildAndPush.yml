@@ -1,6 +1,9 @@
 
 trigger:
-- main
+  batch: true
+  branches:
+    include:
+    - main
 resources:
 - repo: self
 variables:
@@ -10,10 +13,51 @@ variables:
   tag: '$(Build.BuildId)'
   # Agent VM image name
   vmImageName: 'ubuntu-latest'
+  solution: '**/*.sln'
+  buildPlatform: 'Any CPU'
+  buildConfiguration: 'Release'
+
 stages:
 - stage: Build
   displayName: Build and push stage
   jobs:
+  - job: CodeAnalyze
+    displayName: Sonarcloud Code Analyze
+    pool:
+      vmImage: 'windows-latest'
+    steps:
+    - task: NuGetToolInstaller@1
+
+    - task: NuGetCommand@2
+      inputs:
+        restoreSolution: '$(solution)'
+
+    - task: SonarCloudPrepare@1
+      displayName: 'Prepare analysis configuration'
+      inputs:
+        SonarCloud: 'SonarCloudSC'
+        organization: 'aleksandrivanov13'
+        scannerMode: 'MSBuild'
+        projectKey: 'AleksandrIvanov13_BeatlesTracksDBVSS'
+        projectName: 'BeatlesTracksDBVSS'
+
+    - task: VSBuild@1
+      inputs:
+        solution: '$(solution)'
+        msbuildArgs: '/p:DeployOnBuild=true /p:WebPublishMethod=Package /p:PackageAsSingleFile=true /p:SkipInvalidConfigurations=true /p:PackageLocation="$(build.artifactStagingDirectory)"'
+        platform: '$(buildPlatform)'
+        configuration: '$(buildConfiguration)'
+
+    - task: VSTest@2
+      inputs:
+        platform: '$(buildPlatform)'
+        configuration: '$(buildConfiguration)'
+
+    - task: SonarCloudAnalyze@1
+      displayName: 'Run SonarCloud analysis'
+
+    - task: SonarCloudPublish@1
+      displayName: 'Publish results on build summary'
   - job: Build
     displayName: Build
     pool:
