@@ -4,6 +4,10 @@ trigger:
   branches:
     include:
     - main
+  paths:    
+    exclude:
+    - ADO
+    - IAC
 resources:
 - repo: self
 variables:
@@ -63,6 +67,20 @@ stages:
     pool:
       vmImage: $(vmImageName)
     steps:
+    - task: replacetokens@3
+      displayName: Replace Tokens (Insert build id to manifests)
+      inputs:
+        rootDirectory: '$(Build.SourcesDirectory)/manifests'
+        targetFiles: 'beatlestracksdb.yml'
+        encoding: 'auto'
+        writeBOM: true
+        actionOnMissing: 'fail'
+        keepToken: false
+        tokenPrefix: '#'
+        tokenSuffix: '#'
+        useLegacyPattern: false
+        enableTransforms: false
+        enableTelemetry: true
     - task: Docker@2
       displayName: Build and push an image to container registry
       inputs:

@@ -1,9 +1,13 @@
 resources:
   pipelines:
-  - pipeline: Prod_BuildAndPush
+  - pipeline: BuildAndPush
     source: Prod_BuildAndPush
-    trigger: true
+    trigger:
+      branches:
+        include:
+        - main
 
+trigger: none
 stages:
 - stage: Deploy
   displayName: Deploy to prod
@@ -11,7 +15,7 @@ stages:
   jobs:
   - deployment: Deploy
     displayName: Deploy to AKS
-    environment: $(k8sEnv)
+    environment: k8s.prod
     pool: 
       vmImage: ubuntu-latest
     strategy:
@@ -59,7 +63,7 @@ stages:
           - task: KubernetesManifest@0
             inputs:
               action: 'deploy'
-              namespace: 'dev'
+              namespace: 'prod'
               manifests: |
                 $(Pipeline.Workspace)/manifests/dbsecret.yml
                 $(Pipeline.Workspace)/manifests/beatlestracksdb.yml              
