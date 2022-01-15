@@ -8,7 +8,7 @@ resources:
         - dev
 variables: 
   K8sEnv: dev
-  
+
 trigger: none
 stages:
 - stage: Deploy
@@ -42,7 +42,8 @@ stages:
             displayName: Replace Tokens
             inputs:
               rootDirectory: '$(Pipeline.Workspace)/manifests/'
-              targetFiles: 'dbsecret.yml'
+              targetFiles: |
+                'dbsecret.yml'
               encoding: 'auto'
               writeBOM: true
               actionOnMissing: 'warn'
