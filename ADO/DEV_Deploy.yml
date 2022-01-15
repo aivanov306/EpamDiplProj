@@ -43,7 +43,7 @@ stages:
             inputs:
               rootDirectory: '$(Pipeline.Workspace)/manifests/'
               targetFiles: |
-                'dbsecret.yml'
+                '$(Pipeline.Workspace)/manifests/dbsecret.yml'
               encoding: 'auto'
               writeBOM: true
               actionOnMissing: 'warn'
