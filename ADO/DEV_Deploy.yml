@@ -12,6 +12,9 @@ stages:
 - stage: Deploy
   displayName: Deploy to dev
 
+variables: 
+  K8sEnv: dev
+  
   jobs:
   - deployment: Deploy
     displayName: Deploy to AKS (dev env)
@@ -54,7 +57,7 @@ stages:
               verbosity: detailed
             env:
               DBConnectionString: $(DBConnectionString)
-              K8sEnv: dev
+              
           - task: Bash@3
             inputs:
               targetType: 'inline'
