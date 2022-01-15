@@ -41,7 +41,6 @@ stages:
           - task: replacetokens@3
             displayName: Replace Tokens
             inputs:
-              rootDirectory: '$(Pipeline.Workspace)/manifests/'
               targetFiles: |
                 '$(Pipeline.Workspace)/manifests/dbsecret.yml'
               encoding: 'auto'
