@@ -6,15 +6,13 @@ resources:
       branches:
         include:
         - dev
-
+variables: 
+  K8sEnv: dev
+  
 trigger: none
 stages:
 - stage: Deploy
   displayName: Deploy to dev
-
-variables: 
-  K8sEnv: dev
-  
   jobs:
   - deployment: Deploy
     displayName: Deploy to AKS (dev env)
