@@ -40,9 +40,8 @@ stages:
           - task: replacetokens@3
             displayName: Replace Tokens
             inputs:
-              targetFiles: |
-                '$(Pipeline.Workspace)/manifests/dbsecret.yml'
-                '$(Pipeline.Workspace)/manifests/beatlestracksdb.yml'
+              rootDirectory: '$(Pipeline.Workspace)/manifests/'
+              targetFiles: 'dbsecret.yml'
               encoding: 'auto'
               writeBOM: true
               actionOnMissing: 'warn'
