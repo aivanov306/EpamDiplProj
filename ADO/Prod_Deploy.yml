@@ -7,6 +7,9 @@ resources:
         include:
         - main
 
+variables: 
+  K8sEnv: prod
+  
 trigger: none
 stages:
 - stage: Deploy
@@ -38,7 +41,7 @@ stages:
                 tree $(Pipeline.Workspace)/manifests
                 cat $(Pipeline.Workspace)/manifests/dbsecret.yml
           - task: replacetokens@3
-            displayName: Replace Tokens
+            displayName: Replace Tokens (dbsecret)
             inputs:
               rootDirectory: '$(Pipeline.Workspace)/manifests/'
               targetFiles: 'dbsecret.yml'
@@ -46,13 +49,31 @@ stages:
               writeBOM: true
               actionOnMissing: 'warn'
               keepToken: false
-              tokenPrefix: '#'
-              tokenSuffix: '#'
+              tokenPrefix: '##'
+              tokenSuffix: '##'
               useLegacyPattern: false
               enableTransforms: false
-              enableTelemetry: true   
+              enableTelemetry: true
+              verbosity: detailed
             env:
-              DBConnectionString: $(DBConnectionString)       
+              DBConnectionString: $(DBConnectionString)
+          - task: replacetokens@3
+            displayName: Replace Tokens (deployment & service)
+            inputs:
+              rootDirectory: '$(Pipeline.Workspace)/manifests/'
+              targetFiles: 'beatlestracksdb.yml'
+              encoding: 'auto'
+              writeBOM: true
+              actionOnMissing: 'warn'
+              keepToken: false
+              tokenPrefix: '##'
+              tokenSuffix: '##'
+              useLegacyPattern: false
+              enableTransforms: false
+              enableTelemetry: true
+              verbosity: detailed
+            env:
+              DBConnectionString: $(DBConnectionString)
           - task: Bash@3
             inputs:
               targetType: 'inline'

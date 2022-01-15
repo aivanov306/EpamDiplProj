@@ -6,6 +6,7 @@ resources:
       branches:
         include:
         - dev
+
 variables: 
   K8sEnv: dev
   
@@ -13,6 +14,7 @@ trigger: none
 stages:
 - stage: Deploy
   displayName: Deploy to dev
+  
   jobs:
   - deployment: Deploy
     displayName: Deploy to AKS (dev env)
@@ -71,8 +73,7 @@ stages:
               enableTelemetry: true
               verbosity: detailed
             env:
-              DBConnectionString: $(DBConnectionString)
-              
+              DBConnectionString: $(DBConnectionString)              
           - task: Bash@3
             inputs:
               targetType: 'inline'
